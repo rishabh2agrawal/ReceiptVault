@@ -1,26 +1,193 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@200;300;400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@300;400;500&display=swap');
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* ── Backgrounds ─────────────────────────────────────── */
+  --bg-primary:    #0A0A0F;
+  --bg-secondary:  #111118;
+  --bg-tertiary:   #18181F;
+  --bg-elevated:   #1E1E28;
+  --bg-splash:     #000000;
+
+  /* ── Glass Surfaces ──────────────────────────────────── */
+  --glass-light:   rgba(255, 255, 255, 0.04);
+  --glass-medium:  rgba(255, 255, 255, 0.07);
+  --glass-strong:  rgba(255, 255, 255, 0.10);
+  --glass-border:  rgba(255, 255, 255, 0.08);
+  --glass-border-active: rgba(255, 255, 255, 0.20);
+  --glass-highlight: rgba(255, 255, 255, 0.06);
+
+  /* ── Accent — Soft Violet Indigo ─────────────────────── */
+  --accent:        #818CF8;
+  --accent-bright: #A5B4FC;
+  --accent-dim:    rgba(129, 140, 248, 0.15);
+  --accent-glow:   rgba(129, 140, 248, 0.25);
+  --accent-border: rgba(129, 140, 248, 0.35);
+
+  /* ── Semantic ─────────────────────────────────────────── */
+  --emerald:       #34D399;
+  --emerald-dim:   rgba(52, 211, 153, 0.15);
+  --emerald-glow:  rgba(52, 211, 153, 0.20);
+  --amber:         #FBBF24;
+  --amber-dim:     rgba(251, 191, 36, 0.15);
+  --amber-glow:    rgba(251, 191, 36, 0.20);
+  --rose:          #F87171;
+  --rose-dim:      rgba(248, 113, 113, 0.15);
+  --rose-glow:     rgba(248, 113, 113, 0.20);
+  --purple:        #C084FC;
+  --purple-dim:    rgba(192, 132, 252, 0.15);
+
+  /* ── Text Hierarchy ──────────────────────────────────── */
+  --text-primary:    #F5F5F7;
+  --text-secondary:  #8E8E93;
+  --text-tertiary:   #48484A;
+  --text-quaternary: #2C2C2E;
+
+  /* ── Separators ──────────────────────────────────────── */
+  --separator:       rgba(255, 255, 255, 0.06);
+  --separator-strong: rgba(255, 255, 255, 0.12);
+
+  /* ── Sidebar ─────────────────────────────────────────── */
+  --sidebar-width: 260px;
+  --sidebar-bg:    rgba(10, 10, 15, 0.95);
+
+  /* ── Shadows ─────────────────────────────────────────── */
+  --shadow-card:   0 2px 20px rgba(0,0,0,0.5), 0 0 0 0.5px rgba(255,255,255,0.06);
+  --shadow-glow-accent: 0 0 32px rgba(129,140,248,0.20);
+  --shadow-glow-amber:  0 0 32px rgba(251,191,36,0.20);
+  --shadow-glow-rose:   0 0 32px rgba(248,113,113,0.20);
+  --shadow-glow-emerald:0 0 32px rgba(52,211,153,0.20);
+  --shadow-elevated: 0 8px 40px rgba(0,0,0,0.6), 0 0 0 0.5px rgba(255,255,255,0.08);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Typography scale */
+.font-display { font-family: 'Sora', sans-serif; }
+.font-mono    { font-family: 'DM Mono', monospace; }
+
+/* Hero amount — the signature large thin number */
+.hero-amount {
+  font-family: 'Sora', sans-serif;
+  font-weight: 200;
+  font-size: clamp(40px, 5vw, 64px);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--text-primary);
+}
+.hero-amount-large {
+  font-family: 'Sora', sans-serif;
+  font-weight: 200;
+  font-size: clamp(22px, 2.5vw, 32px);
+  letter-spacing: -0.03em;
+  line-height: 1;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Section labels */
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
 }
+
+/* Glass card base */
+.glass-card {
+  background: var(--glass-medium);
+  border: 0.5px solid var(--glass-border);
+  border-radius: 20px;
+  box-shadow: var(--shadow-card);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Top edge highlight — the key detail that makes glass feel real */
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255,255,255,0.12) 30%,
+    rgba(255,255,255,0.08) 70%,
+    transparent 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Grid background pattern */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(129,140,248,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(129,140,248,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Noise texture overlay */
+.noise::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--glass-border); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--glass-border-active); }
+
+/* Custom selection color */
+::selection { background: var(--accent-dim); color: var(--accent-bright); }
+
+/* Smooth scrolling */
+html { scroll-behavior: smooth; }
+
+/* Remove default input styles */
+input, textarea {
+  background: var(--bg-tertiary);
+  border: 0.5px solid var(--glass-border);
+  border-radius: 12px;
+  color: var(--text-primary);
+  font-family: 'DM Sans', sans-serif;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+input:focus, textarea:focus {
+  border-color: var(--glass-border-active);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+input::placeholder { color: var(--text-tertiary); }
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, #818CF8, #C084FC, #A5B4FC);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Scrollable row */
+.scroll-row {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scrollbar-width: none;
+}
+.scroll-row::-webkit-scrollbar { display: none; }

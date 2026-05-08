@@ -1,0 +1,245 @@
+import { addDays, subDays, format } from 'date-fns';
+
+const today = new Date();
+
+export const mockUser = {
+  id: 'usr_001',
+  name: 'Aryan Sharma',
+  email: 'aryan.sharma@gmail.com',
+  photoUrl: '/avatar.png',
+  phone: '+91 98765 43210',
+};
+
+export const mockReceipts = [
+  {
+    id: 'rcpt_001',
+    store: 'Reliance Digital',
+    category: 'Electronics',
+    amount: 82990,
+    date: format(subDays(today, 1), 'dd/MM/yyyy'),
+    items: [
+      { name: 'Samsung 55" QLED TV', qty: 1, price: 79990 },
+      { name: 'HDMI Cable', qty: 2, price: 1500 },
+    ],
+    returnDeadline: format(addDays(today, 2), 'dd/MM/yyyy'),
+    warrantyExpiry: format(addDays(today, 365), 'dd/MM/yyyy'),
+    imageUrl: 'https://images.unsplash.com/photo-1593359677879-a4bb92f4834a?w=400',
+    aiExtracted: true,
+    paymentMode: 'Credit Card',
+    daysLeft: 2,
+  },
+  {
+    id: 'rcpt_002',
+    store: 'Flipkart',
+    category: 'Electronics',
+    amount: 1299,
+    date: format(subDays(today, 2), 'dd/MM/yyyy'),
+    items: [{ name: 'boAt Airdopes 141', qty: 1, price: 1299 }],
+    returnDeadline: format(addDays(today, 1), 'dd/MM/yyyy'),
+    warrantyExpiry: null,
+    imageUrl: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400',
+    aiExtracted: true,
+    paymentMode: 'UPI',
+    daysLeft: 1,
+  },
+  {
+    id: 'rcpt_003',
+    store: 'Myntra',
+    category: 'Fashion',
+    amount: 7495,
+    date: format(subDays(today, 3), 'dd/MM/yyyy'),
+    items: [{ name: 'Nike Air Force 1', qty: 1, price: 7495 }],
+    returnDeadline: format(addDays(today, 5), 'dd/MM/yyyy'),
+    warrantyExpiry: null,
+    imageUrl: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400',
+    aiExtracted: true,
+    paymentMode: 'Debit Card',
+    daysLeft: 5,
+  },
+  {
+    id: 'rcpt_004',
+    store: 'Zomato',
+    category: 'Food',
+    amount: 847,
+    date: format(subDays(today, 1), 'dd/MM/yyyy'),
+    items: [
+      { name: 'Butter Chicken', qty: 1, price: 420 },
+      { name: 'Garlic Naan x2', qty: 2, price: 180 },
+      { name: 'Delivery fee', qty: 1, price: 247 },
+    ],
+    returnDeadline: null,
+    warrantyExpiry: null,
+    imageUrl: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400',
+    aiExtracted: true,
+    paymentMode: 'UPI',
+    daysLeft: null,
+  },
+  {
+    id: 'rcpt_005',
+    store: 'BigBasket',
+    category: 'Groceries',
+    amount: 3240,
+    date: format(subDays(today, 4), 'dd/MM/yyyy'),
+    items: [
+      { name: 'Monthly Atta 10kg', qty: 1, price: 450 },
+      { name: 'Tata Salt', qty: 3, price: 90 },
+      { name: 'Fruits & Vegetables', qty: 1, price: 2700 },
+    ],
+    returnDeadline: null,
+    warrantyExpiry: null,
+    imageUrl: 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=400',
+    aiExtracted: true,
+    paymentMode: 'Credit Card',
+    daysLeft: null,
+  },
+  {
+    id: 'rcpt_006',
+    store: 'Amazon.in',
+    category: 'Electronics',
+    amount: 11999,
+    date: format(subDays(today, 7), 'dd/MM/yyyy'),
+    items: [{ name: 'Kindle Paperwhite 16GB', qty: 1, price: 11999 }],
+    returnDeadline: null,
+    warrantyExpiry: format(addDays(today, 358), 'dd/MM/yyyy'),
+    imageUrl: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400',
+    aiExtracted: true,
+    paymentMode: 'EMI',
+    daysLeft: null,
+  },
+  {
+    id: 'rcpt_007',
+    store: 'Swiggy',
+    category: 'Food',
+    amount: 342,
+    date: format(today, 'dd/MM/yyyy'),
+    items: [{ name: 'Chicken Sandwich', qty: 1, price: 280 }, { name: 'Cold Coffee', qty: 1, price: 62 }],
+    returnDeadline: null,
+    warrantyExpiry: null,
+    imageUrl: 'https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=400',
+    aiExtracted: true,
+    paymentMode: 'UPI',
+    daysLeft: null,
+  },
+  {
+    id: 'rcpt_008',
+    store: 'Croma',
+    category: 'Electronics',
+    amount: 999,
+    date: format(subDays(today, 12), 'dd/MM/yyyy'),
+    items: [{ name: 'realme Buds Classic', qty: 1, price: 999 }],
+    returnDeadline: format(subDays(today, 2), 'dd/MM/yyyy'),
+    warrantyExpiry: null,
+    imageUrl: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=400',
+    aiExtracted: true,
+    paymentMode: 'Cash',
+    daysLeft: -2,
+  },
+  {
+    id: 'rcpt_009',
+    store: 'Nykaa',
+    category: 'Fashion',
+    amount: 2100,
+    date: format(subDays(today, 5), 'dd/MM/yyyy'),
+    items: [{ name: 'Minimalist Skincare Set', qty: 1, price: 2100 }],
+    returnDeadline: format(addDays(today, 8), 'dd/MM/yyyy'),
+    warrantyExpiry: null,
+    imageUrl: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400',
+    aiExtracted: true,
+    paymentMode: 'Credit Card',
+    daysLeft: 8,
+  },
+  {
+    id: 'rcpt_010',
+    store: 'D-Mart',
+    category: 'Groceries',
+    amount: 560,
+    date: format(subDays(today, 2), 'dd/MM/yyyy'),
+    items: [{ name: 'Weekly vegetables', qty: 1, price: 560 }],
+    returnDeadline: null,
+    warrantyExpiry: null,
+    imageUrl: 'https://images.unsplash.com/photo-1608686207856-001b95cf60ca?w=400',
+    aiExtracted: true,
+    paymentMode: 'Cash',
+    daysLeft: null,
+  },
+  {
+    id: 'rcpt_011',
+    store: 'H&M',
+    category: 'Fashion',
+    amount: 4999,
+    date: format(subDays(today, 8), 'dd/MM/yyyy'),
+    items: [{ name: 'Winter Jacket', qty: 1, price: 4999 }],
+    returnDeadline: format(addDays(today, 14), 'dd/MM/yyyy'),
+    warrantyExpiry: null,
+    imageUrl: 'https://images.unsplash.com/photo-1544022613-e87ca75a784a?w=400',
+    aiExtracted: true,
+    paymentMode: 'Credit Card',
+    daysLeft: 14,
+  },
+  {
+    id: 'rcpt_012',
+    store: 'Decathlon',
+    category: 'Fashion',
+    amount: 3499,
+    date: format(subDays(today, 6), 'dd/MM/yyyy'),
+    items: [{ name: 'Running Shoes', qty: 1, price: 3499 }],
+    returnDeadline: format(addDays(today, 30), 'dd/MM/yyyy'),
+    warrantyExpiry: null,
+    imageUrl: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400',
+    aiExtracted: true,
+    paymentMode: 'Debit Card',
+    daysLeft: 30,
+  },
+];
+
+export const mockSubscriptions = [
+  { id: 'sub_001', name: 'Netflix Premium', amount: 649, cycle: 'month', renewsIn: 4, status: 'active', logo: '🎬' },
+  { id: 'sub_002', name: 'Spotify Premium', amount: 119, cycle: 'month', renewsIn: 12, status: 'active', logo: '🎵' },
+  { id: 'sub_003', name: 'Amazon Prime', amount: 1499, cycle: 'year', renewsIn: 45, status: 'active', logo: '📦' },
+  { id: 'sub_004', name: 'YouTube Premium', amount: 189, cycle: 'month', renewsIn: 2, status: 'urgent', logo: '▶️' },
+  { id: 'sub_005', name: 'Disney+ Hotstar', amount: 899, cycle: 'year', renewsIn: 90, status: 'active', logo: '⭐' },
+];
+
+export const mockSpendingByMonth = [
+  { month: 'Jul', amount: 28900 },
+  { month: 'Aug', amount: 19800 },
+  { month: 'Sep', amount: 22100 },
+  { month: 'Oct', amount: 31500 },
+  { month: 'Nov', amount: 18200 },
+  { month: 'Dec', amount: 24830 },
+];
+
+export const mockSpendingByWeek = [
+  { day: 'Mon', amount: 3200 },
+  { day: 'Tue', amount: 890 },
+  { day: 'Wed', amount: 4500 },
+  { day: 'Thu', amount: 1200 },
+  { day: 'Fri', amount: 8340 },
+  { day: 'Sat', amount: 2100 },
+  { day: 'Sun', amount: 4600 },
+];
+
+export const mockSpendingByYear = [
+  { month: 'Jan', amount: 45200 },
+  { month: 'Feb', amount: 38900 },
+  { month: 'Mar', amount: 52100 },
+  { month: 'Apr', amount: 41500 },
+  { month: 'May', amount: 24830 },
+];
+
+export const mockCategories = [
+  { name: 'Electronics', amount: 96287, percentage: 35, color: '#818CF8', emoji: '⚡' },
+  { name: 'Food', amount: 49230, percentage: 28, color: '#FBBF24', emoji: '🍕' },
+  { name: 'Fashion', amount: 32890, percentage: 18, color: '#C084FC', emoji: '👗' },
+  { name: 'Groceries', amount: 21430, percentage: 12, color: '#34D399', emoji: '🛒' },
+  { name: 'Other', amount: 12180, percentage: 7, color: '#48484A', emoji: '📦' },
+];
+
+export const mockDeadlines = mockReceipts
+  .filter(r => r.returnDeadline !== null)
+  .sort((a, b) => (a.daysLeft ?? 999) - (b.daysLeft ?? 999));
+
+export const totalSpentThisMonth = 24830;
+export const totalReceipts = mockReceipts.length;
+export const expiringCount = mockReceipts.filter(r => r.daysLeft !== null && r.daysLeft > 0 && r.daysLeft <= 7).length;
+export const protectedCount = mockReceipts.filter(r => r.warrantyExpiry !== null).length;

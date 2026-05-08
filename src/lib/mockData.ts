@@ -4,8 +4,8 @@ const today = new Date();
 
 export const mockUser = {
   id: 'usr_001',
-  name: 'Aryan Sharma',
-  email: 'aryan.sharma@gmail.com',
+  name: 'Sourav Kr Sahu',
+  email: 'lcs.souravkrsahu@gmail.com',
   photoUrl: '/avatar.png',
   phone: '+91 98765 43210',
 };
